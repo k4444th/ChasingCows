@@ -21,7 +21,7 @@ class GameScene extends Phaser.Scene {
     this.windowHeight = window.innerHeight;
 
     if (this.windowWidth <= this.windowHeight) {
-      this.pleaseTurnYourDevice.setScale(zoom);
+      this.pleaseTurnYourDevice.setScale(zoom140x77);
       this.pleaseTurnYourDevice.visible = true;
     }
     else {
@@ -31,11 +31,11 @@ class GameScene extends Phaser.Scene {
 }
 
 const canvasSizes = {
-  height: 1080,
-  width: 1960
+  height: 2160,
+  width: 3920
 }
 
-const zoom = 14;
+const zoom140x77 = 28;
 
 const config = {
   type: Phaser.WEBGL,
