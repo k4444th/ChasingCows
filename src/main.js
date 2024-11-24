@@ -9,6 +9,20 @@ export const canvasSizes = {
   width: 3920
 }
 
+export const transitionSpeed = 1000
+
+export const zoom140x77 = 28
+export const zoom245x135 = 16
+export const fontSizeLarge = 100 
+
+export const switchScene = (oldScene, newScene) => {
+  oldScene.cameras.main.fadeOut(1000, 0, 0, 0)
+
+  oldScene.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+    oldScene.scene.start(newScene);
+  })
+};
+
 const config = {
   type: Phaser.WEBGL,
   canvas: gameCanvas,
@@ -22,17 +36,3 @@ const config = {
 }
 
 const game = new Phaser.Game(config)
-
-export const transitionSpeed = 1000
-
-export const zoom140x77 = 28
-export const zoom245x135 = 16
-export const fontSizeLarge = 100 
-
-export const switchScene = (oldScene, newScene) => {
-  oldScene.cameras.main.fadeOut(1000, 0, 0, 0)
-
-  oldScene.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
-    oldScene.scene.start(newScene);
-	})
-};
