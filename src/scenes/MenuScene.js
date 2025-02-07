@@ -1,7 +1,8 @@
 import { 
     canvasSizes,
     zoom245x135,
-    switchScene
+    switchScene,
+    transitionSpeed
 } from './../main'
 
 class MenuScene extends Phaser.Scene {
@@ -60,7 +61,7 @@ class MenuScene extends Phaser.Scene {
     }
 
     create() {
-        this.cameras.main.fadeIn(1000, 0, 0, 0)
+        this.cameras.main.fadeIn(transitionSpeed, 0, 0, 0)
 
         this.bg = this.add.image(0, 0, "bg").setOrigin(0,0).setScale(zoom245x135)
         this.planetOrange = this.add.image(this.planetOrangeCoords[0], this.planetOrangeCoords[1], "planetOrange").setScale(zoom245x135)
@@ -72,7 +73,13 @@ class MenuScene extends Phaser.Scene {
         this.shopBtn = this.add.image(canvasSizes.width / 2, canvasSizes.height * 0.875, "shopBtn").setScale(zoom245x135)
 
         this.playBtn.setInteractive().on('pointerdown', () => {
-        switchScene(this, "PlanetSelector")
+            if (localStorage.getItem('introSequenz') == 'true') {
+                switchScene(this, 'PlanetSelector')
+            }
+            else if (localStorage.getItem('introSequenz') == 'false'){
+                localStorage.setItem('introSequenz', true)
+                switchScene(this, 'IntroSequence')
+            }
         })
     }
 

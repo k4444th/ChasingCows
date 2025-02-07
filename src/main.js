@@ -2,6 +2,7 @@ import './style.css'
 import Phaser from 'phaser'
 
 import MenuScene from './scenes/MenuScene'
+import IntroSequence from './scenes/IntroSequence'
 import PlanetSelector from './scenes/PlanetSelector'
 
 export const canvasSizes = {
@@ -16,12 +17,16 @@ export const zoom245x135 = 16
 export const fontSizeLarge = 100 
 
 export const switchScene = (oldScene, newScene) => {
-  oldScene.cameras.main.fadeOut(1000, 0, 0, 0)
+  oldScene.cameras.main.fadeOut(transitionSpeed, 0, 0, 0)
 
   oldScene.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
     oldScene.scene.start(newScene);
   })
 };
+
+export const resetLocalStorage = () => {
+  localStorage.setItem('introSequenz', 'false')
+}
 
 const config = {
   type: Phaser.WEBGL,
@@ -31,7 +36,8 @@ const config = {
   pixelArt: true,
   scene:[
     MenuScene,
-    PlanetSelector
+    PlanetSelector,
+    IntroSequence
   ]
 }
 

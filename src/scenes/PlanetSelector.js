@@ -1,7 +1,8 @@
 import { 
     canvasSizes,
     zoom245x135,
-    switchScene
+    switchScene,
+    transitionSpeed
 } from '../main'
 
 class PlanetSelector extends Phaser.Scene {
@@ -61,7 +62,7 @@ class PlanetSelector extends Phaser.Scene {
       this.currentPlanetIndex = 0
       this.currentPlanetName = this.planetNames[this.currentPlanetIndex]
 
-      this.cameras.main.fadeIn(1000, 0, 0, 0)
+      this.cameras.main.fadeIn(transitionSpeed, 0, 0, 0)
       this.bg = this.add.image(0, 0, "bg").setOrigin(0,0).setScale(zoom245x135)
       this.arrowBack = this.add.image(50, 50, "arrowBack").setOrigin(0,0).setScale(zoom245x135)
       this.arrowLeft = this.add.image(this.arrowOffsetX, canvasSizes.height / 2, "arrowLeft").setScale(zoom245x135)
