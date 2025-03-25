@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4aj3fyrmyhe6"]
+
+[ext_resource type="Script" uid="uid://bf1pqvuykxoqq" path="res://Scenes/cow.gd" id="1_kv73t"]
+[ext_resource type="Texture2D" uid="uid://bhaonhl5xlg5j" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-10.png" id="1_oad1y"]
+[ext_resource type="Texture2D" uid="uid://ub8uc05ffyqx" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-1.png" id="1_ss0fy"]
+[ext_resource type="Texture2D" uid="uid://ba3v36j2x2dqh" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-7.png" id="2_vkidu"]
+[ext_resource type="Texture2D" uid="uid://bt52clcxyukkv" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-4.png" id="3_wjkae"]
+[ext_resource type="Texture2D" uid="uid://cu1tpo0uf0ka5" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-2.png" id="5_kflls"]
+[ext_resource type="Texture2D" uid="uid://dagx1ec4k1kco" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-11.png" id="5_vflyu"]
+[ext_resource type="Texture2D" uid="uid://crd14s1c3ry7l" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-3.png" id="6_er45c"]
+[ext_resource type="Texture2D" uid="uid://crmw3u0yoc6sb" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-12.png" id="6_kv73t"]
+[ext_resource type="Texture2D" uid="uid://xnc28e2igqj8" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-8.png" id="7_i15e8"]
+[ext_resource type="Texture2D" uid="uid://d1rp5jq23qbdb" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-9.png" id="8_4ex0s"]
+[ext_resource type="Texture2D" uid="uid://cd5lq85yqiyn2" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-5.png" id="9_wdk5j"]
+[ext_resource type="Texture2D" uid="uid://61tym34s8xt3" path="res://Graphics/Earth Cows/Basic Cow/Cow_Sprites-6.png" id="10_iga3h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_asfwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oad1y")
+}],
+"loop": true,
+"name": &"standing_back_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vkidu")
+}],
+"loop": true,
+"name": &"standing_back_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wjkae")
+}],
+"loop": true,
+"name": &"standing_front_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ss0fy")
+}],
+"loop": true,
+"name": &"standing_front_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vflyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kv73t")
+}],
+"loop": true,
+"name": &"walking_back_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i15e8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4ex0s")
+}],
+"loop": true,
+"name": &"walking_back_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wdk5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iga3h")
+}],
+"loop": true,
+"name": &"walking_front_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kflls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_er45c")
+}],
+"loop": true,
+"name": &"walking_front_right",
+"speed": 5.0
+}]
+
+[node name="Cow" type="CharacterBody2D"]
+script = ExtResource("1_kv73t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_asfwn")
+animation = &"standing_front_right"
+autoplay = "standing_front_right"
+frame_progress = 0.221278
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
