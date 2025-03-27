@@ -5,7 +5,7 @@ var direction := Vector2(0.0, 0.0)
 var lastDirection := "front_right"
 var state := "standing"
 
-@export var speed = 50
+@export var speed := 50
 
 func _process(_delta: float) -> void:
 	getKeyboardInputs()
