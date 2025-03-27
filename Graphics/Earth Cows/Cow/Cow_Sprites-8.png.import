@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmu81ttgc7iel"
-path="res://.godot/imported/Cow_Sprites-6.png-f8efdf12dc0537f90d5a949f89bd2751.ctex"
+uid="uid://bgyltjsskd7mo"
+path="res://.godot/imported/Cow_Sprites-8.png-ffeee668d0b37a97e028625f3f6bb78b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Earth Cows/Detailed Cow/Cow_Sprites-6.png"
-dest_files=["res://.godot/imported/Cow_Sprites-6.png-f8efdf12dc0537f90d5a949f89bd2751.ctex"]
+source_file="res://Graphics/Earth Cows/Cow/Cow_Sprites-8.png"
+dest_files=["res://.godot/imported/Cow_Sprites-8.png-ffeee668d0b37a97e028625f3f6bb78b.ctex"]
 
 [params]
 
