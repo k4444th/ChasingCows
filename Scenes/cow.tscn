@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4aj3fyrmyhe6"]
+[gd_scene load_steps=16 format=3 uid="uid://b4aj3fyrmyhe6"]
 
 [ext_resource type="Script" uid="uid://bf1pqvuykxoqq" path="res://Scenes/cow.gd" id="1_kv73t"]
 [ext_resource type="Texture2D" uid="uid://dloll4u00kc80" path="res://Graphics/Earth Cows/Cow/Cow_Sprites-10.png" id="2_kv73t"]
@@ -93,7 +93,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kv73t"]
+radius = 22.7778
+height = 80.0
+
 [node name="Cow" type="CharacterBody2D"]
+z_index = 2
+y_sort_enabled = true
 script = ExtResource("1_kv73t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -105,3 +111,10 @@ autoplay = "standing_front_right"
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(0, 16)
+scale = Vector2(0.9, 0.25)
+shape = SubResource("CapsuleShape2D_kv73t")

@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b4aj3fyrmyhe6" path="res://Scenes/cow.tscn" id="2_wrm1d"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 
 [node name="EarthLevel1" parent="." instance=ExtResource("1_qxrlw")]
 
-[node name="Cow" parent="." instance=ExtResource("2_wrm1d")]
+[node name="Cow" parent="EarthLevel1" instance=ExtResource("2_wrm1d")]
