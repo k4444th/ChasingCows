@@ -94,8 +94,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kv73t"]
-radius = 22.7778
-height = 80.0
+radius = 21.1111
+height = 72.0
 
 [node name="Cow" type="CharacterBody2D"]
 z_index = 2
