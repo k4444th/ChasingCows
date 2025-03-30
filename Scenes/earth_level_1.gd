@@ -10,13 +10,9 @@ var oceanRadius := 0
 const PI = 3.1415926525
 
 enum layers {
-	layer0 = 0,
-	layer1 = 1,
-	layer2 = 2,
-	layer3 = 3,
-	layer4 = 4,
-	layer5 = 5,
-	layer6 = 6,
+	ocean  = 0,
+	ground = 1,
+	mountain1 = 2
 }
 
 var offsets := [
@@ -33,7 +29,7 @@ func _ready() -> void:
 
 func findBoundaries() -> int:
 	var maxPos = 0
-	var usedCells = get_used_cells(layers.layer1)
+	var usedCells = get_used_cells(layers.ocean)
 	
 	for cell in usedCells:
 		if abs(cell.x) > maxPos or abs(cell.y) > maxPos:
@@ -46,7 +42,7 @@ func placeOcean():
 		for y in range(worldOrigin.y - oceanRadius, worldOrigin.y + oceanRadius):
 			var currentCell := Vector2i(x, y)
 			if isCellInCircle(currentCell, worldOrigin, oceanRadius):
-				set_cell(layers.layer0, currentCell, 0, oceanAtlasCoords)
+				set_cell(layers.ocean, currentCell, 0, oceanAtlasCoords)
 
 func isCellInCircle(cell: Vector2i, origin: Vector2i, radius: int) -> bool:
 	var dx := origin.x - cell.x
@@ -54,9 +50,9 @@ func isCellInCircle(cell: Vector2i, origin: Vector2i, radius: int) -> bool:
 	return pow(dx, 2) + pow(dy, 2) < pow(radius, 2)
 
 func setBoundaries():
-	var usedCells = get_used_cells(layers.layer1)
+	var usedCells = get_used_cells(layers.ground)
 	for cell in usedCells:
 		for offset in offsets:
 			var currentCell = cell + offset
-			if get_cell_source_id(layers.layer1, currentCell) == -1:
-				set_cell(layers.layer1, currentCell, 0, borderAtlasCoords)
+			if get_cell_source_id(layers.ground, currentCell) == -1:
+				set_cell(layers.ground, currentCell, 0, borderAtlasCoords)
