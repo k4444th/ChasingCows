@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="Chasing Cows"
-run/main_scene="uid://cwvw1c005xohs"
+run/main_scene="uid://balb7qu8i8on"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/image="uid://ub8uc05ffyqx"
+boot_splash/bg_color=Color(0.0705882, 0.0784314, 0.321569, 1)
+boot_splash/use_filter=false
+boot_splash/image="uid://bglfb2fosjm30"
+config/icon="uid://bglfb2fosjm30"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
 
 [input]
 

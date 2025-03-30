@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6y1lwqp2jij5"]
 
 [ext_resource type="Texture2D" uid="uid://tq0vfe8ytb7y" path="res://Graphics/Earth Tile Map/Earth_Map.png" id="1_g0m5n"]
-[ext_resource type="Script" uid="uid://dnnegmst60kb2" path="res://Scenes/earth_level_1.gd" id="2_ytx1f"]
+[ext_resource type="Script" uid="uid://cxky6di1kykrg" path="res://Scenes/earth_tile_map.gd" id="2_ytx1f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ytx1f"]
 texture = ExtResource("1_g0m5n")
@@ -113,7 +113,7 @@ tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ytx1f")
 
-[node name="EarthLevel1" type="TileMap"]
+[node name="EarthTileMap" type="TileMap"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_uh4ul")
 format = 2

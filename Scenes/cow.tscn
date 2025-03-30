@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://b4aj3fyrmyhe6"]
 
-[ext_resource type="Script" uid="uid://bf1pqvuykxoqq" path="res://Scenes/cow.gd" id="1_kv73t"]
+[ext_resource type="Script" uid="uid://bf1pqvuykxoqq" path="res://Fonts/cow.gd" id="1_kv73t"]
 [ext_resource type="Texture2D" uid="uid://dloll4u00kc80" path="res://Graphics/Earth Cows/Cow/Cow_Sprites-10.png" id="2_kv73t"]
 [ext_resource type="Texture2D" uid="uid://cp63vkb53b7lr" path="res://Graphics/Earth Cows/Cow/Cow_Sprites-7.png" id="3_i15e8"]
 [ext_resource type="Texture2D" uid="uid://vynvych2yhb1" path="res://Graphics/Earth Cows/Cow/Cow_Sprites-4.png" id="4_4ex0s"]
@@ -108,7 +108,6 @@ animation = &"walking_back_left"
 autoplay = "standing_front_right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
