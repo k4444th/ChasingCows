@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://5ft334wpbpnb"]
+
+[ext_resource type="Script" uid="uid://v8udr7u8ofu5" path="res://Scenes/galaxy_menu.gd" id="1_6p5vi"]
+[ext_resource type="Texture2D" uid="uid://c505qphnepdhb" path="res://Graphics/Galaxies/AndromedaGalaxy.png" id="1_igu4c"]
+[ext_resource type="FontFile" uid="uid://duag8pn7aovn1" path="res://Fonts/pixelFont.ttf" id="2_7v4jd"]
+[ext_resource type="PackedScene" uid="uid://b3d7kglh0ux62" path="res://Scenes/camera.tscn" id="4_6xwkb"]
+[ext_resource type="Texture2D" uid="uid://cedkorxao73t1" path="res://Graphics/General/ArrowBack.png" id="4_63ge7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_63ge7"]
+line_spacing = 7.5
+paragraph_spacing = 15.0
+font = ExtResource("2_7v4jd")
+font_size = 25
+
+[node name="GalaxyMenu" type="Node2D"]
+script = ExtResource("1_6p5vi")
+cameraZoom = Vector2(1, 1)
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0784314, 0.196078, 1)
+
+[node name="ArrowBackButton" type="TextureButton" parent="Background"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 552.0
+offset_bottom = 552.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("4_63ge7")
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Container" type="Container" parent="Canvas"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="GalaxyInformation" type="Node2D" parent="Canvas/Container"]
+position = Vector2(-540, 40)
+
+[node name="ColorRect" type="ColorRect" parent="Canvas/Container/GalaxyInformation"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 500.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+color = Color(0.0196078, 0.737255, 0.858824, 0.313726)
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Container/GalaxyInformation/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 760.0
+grow_horizontal = 2
+scale = Vector2(1.00191, 1)
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GalaxyName" type="Label" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7v4jd")
+theme_override_font_sizes/font_size = 40
+text = "Andromeda Galaxy"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="GalaxyInfo" type="Label" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 650)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_7v4jd")
+theme_override_font_sizes/font_size = 25
+text = "Your Home Galaxy
+Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto propter ut materia. Quam quo aliquip, officii voluptatem. Qui pariatur officii eos. 
+Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto propter ut materia. Quam quo aliquip, officii voluptatem. Qui pariatur officii eos. 
+Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto propter ut materia. Quam quo aliquip, officii voluptatem. Qui pariatur officii eos. 
+"
+label_settings = SubResource("LabelSettings_63ge7")
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Galaxies" type="Node" parent="."]
+
+[node name="AndromedaButton" type="TextureButton" parent="Galaxies"]
+offset_left = 106.0
+offset_top = 750.0
+offset_right = 299.0
+offset_bottom = 856.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("1_igu4c")
+
+[node name="MilkyWayButton" type="TextureButton" parent="Galaxies"]
+offset_left = 600.0
+offset_top = 300.0
+offset_right = 793.0
+offset_bottom = 406.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("1_igu4c")
+
+[node name="Camera" parent="." instance=ExtResource("4_6xwkb")]
+offset = Vector2(960, 540)
+position_smoothing_enabled = true
+speed = 25
+
+[connection signal="pressed" from="Background/ArrowBackButton" to="." method="_on_arrow_back_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_mouse_exited"]
+[connection signal="pressed" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_entered"]
+[connection signal="mouse_entered" from="Galaxies/MilkyWayButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_exited"]
+[connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_pressed"]
+[connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_andromeda_button_pressed"]

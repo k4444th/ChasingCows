@@ -13,15 +13,16 @@ config_version=5
 config/name="Chasing Cows"
 run/main_scene="uid://balb7qu8i8on"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/bg_color=Color(0.0705882, 0.0784314, 0.321569, 1)
+boot_splash/bg_color=Color(0.0196078, 0.0784314, 0.196078, 1)
 boot_splash/use_filter=false
 boot_splash/image="uid://bglfb2fosjm30"
 config/icon="uid://bglfb2fosjm30"
 
 [display]
 
-window/size/mode=3
-window/stretch/mode="viewport"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/aspect="expand"
 
 [input]
 

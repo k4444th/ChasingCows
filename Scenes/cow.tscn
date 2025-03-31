@@ -104,10 +104,11 @@ script = ExtResource("1_kv73t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_asfwn")
-animation = &"walking_back_left"
+animation = &"standing_front_right"
 autoplay = "standing_front_right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
