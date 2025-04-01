@@ -103,18 +103,18 @@ text_overrun_behavior = 4
 [node name="Galaxies" type="Node" parent="."]
 
 [node name="AndromedaButton" type="TextureButton" parent="Galaxies"]
-offset_left = -6120.0
-offset_top = -2738.0
-offset_right = -5927.0
-offset_bottom = -2632.0
+offset_left = -6608.0
+offset_top = -3172.0
+offset_right = -6415.0
+offset_bottom = -3066.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("1_igu4c")
 
 [node name="MilkyWayButton" type="TextureButton" parent="Galaxies"]
-offset_left = -2220.0
-offset_top = -125.0
-offset_right = -1979.0
-offset_bottom = 11.0
+offset_left = -4173.0
+offset_top = -1445.0
+offset_right = -3932.0
+offset_bottom = -1309.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("5_akqyu")
 
@@ -154,6 +154,7 @@ offset_bottom = -2984.0
 texture_normal = ExtResource("6_2r04r")
 
 [node name="Camera" parent="." instance=ExtResource("4_6xwkb")]
+zoom = Vector2(0.1, 0.1)
 position_smoothing_enabled = true
 speed = 25
 

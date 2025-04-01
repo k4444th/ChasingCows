@@ -8,13 +8,13 @@ extends Node2D
 @onready var galaxyInformationText := $GalaxyInformation/Container/ColorRect/MarginContainer/VBoxContainer/MarginContainer/GalaxyInfo
 
 @onready var galaxyPositions = {
-	"Andromeda": $Galaxies/AndromedaButton.position,
-	"MilkyWay": $Galaxies/MilkyWayButton.position,
-	"Hangay": $Galaxies/HangayButton.position,
-	"Fornax": $Galaxies/FornaxButton.position,
-	"Triangulum": $Galaxies/TriangulumButton.position,
-	"AbsanthaGom": $"Galaxies/Absantha-GomButton".position,
-	"AbsanthaShad": $"Galaxies/Absantha-ShadButtton".position
+	"Andromeda": $Galaxies/AndromedaButton.position + $Galaxies/AndromedaButton.size,
+	"MilkyWay": $Galaxies/MilkyWayButton.position + $Galaxies/MilkyWayButton.size,
+	"Hangay": $Galaxies/HangayButton.position + $Galaxies/HangayButton.size,
+	"Fornax": $Galaxies/FornaxButton.position + $Galaxies/FornaxButton.size,
+	"Triangulum": $Galaxies/TriangulumButton.position + $Galaxies/TriangulumButton.size,
+	"AbsanthaGom": $"Galaxies/Absantha-GomButton".position + $"Galaxies/Absantha-GomButton".size,
+	"AbsanthaShad": $"Galaxies/Absantha-ShadButtton".position + $"Galaxies/Absantha-ShadButtton".size
 }
 
 func setInformtion(GalaxyName: String):
