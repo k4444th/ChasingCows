@@ -156,7 +156,6 @@ texture_normal = ExtResource("6_2r04r")
 [node name="Camera" parent="." instance=ExtResource("4_6xwkb")]
 zoom = Vector2(0.1, 0.1)
 position_smoothing_enabled = true
-speed = 25
 
 [connection signal="pressed" from="Canvas/ArrowBackButton" to="." method="_on_arrow_back_button_pressed"]
 [connection signal="mouse_entered" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_mouse_entered"]

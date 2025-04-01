@@ -1,14 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwlwcbtpff7op"]
+[gd_scene load_steps=4 format=3 uid="uid://dwlwcbtpff7op"]
 
-[ext_resource type="PackedScene" uid="uid://b3d7kglh0ux62" path="res://Scenes/camera.tscn" id="1_b75bk"]
 [ext_resource type="Script" uid="uid://dhtenvsyvyyff" path="res://Scenes/choose_destination.gd" id="1_e68r7"]
-[ext_resource type="Texture2D" uid="uid://c7jpntuat4v6b" path="res://Graphics/General/Placeholder.png" id="1_ur3en"]
-[ext_resource type="FontFile" uid="uid://duag8pn7aovn1" path="res://Fonts/pixelFont.ttf" id="4_e42j6"]
+[ext_resource type="PackedScene" uid="uid://dk645f5lwtqt" path="res://Scenes/selector.tscn" id="3_e42j6"]
+[ext_resource type="Texture2D" uid="uid://cedkorxao73t1" path="res://Graphics/General/ArrowBack.png" id="3_e68r7"]
 
 [node name="ChooseDestination" type="Node2D"]
 script = ExtResource("1_e68r7")
-
-[node name="Camera" parent="." instance=ExtResource("1_b75bk")]
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 layer = -2
@@ -21,177 +18,41 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0196078, 0.0784314, 0.196078, 1)
 
-[node name="Monitor" type="Node" parent="."]
+[node name="ArrowBack" type="TextureButton" parent="Canvas"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 44.0
+offset_bottom = 47.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_e68r7")
 
-[node name="MonitorInner" type="CanvasLayer" parent="Monitor"]
-layer = 10
-
-[node name="Right" type="ColorRect" parent="Monitor/MonitorInner"]
-custom_minimum_size = Vector2(75, 0)
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-
-[node name="Left" type="ColorRect" parent="Monitor/MonitorInner"]
-custom_minimum_size = Vector2(75, 0)
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 50.0
-grow_vertical = 2
-color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-
-[node name="Top" type="ColorRect" parent="Monitor/MonitorInner"]
-custom_minimum_size = Vector2(0, 75)
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 50.0
-grow_horizontal = 2
-color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-
-[node name="Bottom" type="ColorRect" parent="Monitor/MonitorInner"]
-custom_minimum_size = Vector2(0, 75)
-anchors_preset = 12
+[node name="ArrowLeft" type="TextureButton" parent="Canvas"]
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
-grow_horizontal = 2
+offset_left = 40.0
+offset_top = -105.0
+offset_right = 44.0
+offset_bottom = -98.0
 grow_vertical = 0
-color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_e68r7")
 
-[node name="MonitorOuter" type="CanvasLayer" parent="Monitor"]
-layer = 10
-
-[node name="Right" type="ColorRect" parent="Monitor/MonitorOuter"]
-custom_minimum_size = Vector2(50, 0)
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -50.0
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0.281187, 0.281187, 0.281187, 1)
-
-[node name="Left" type="ColorRect" parent="Monitor/MonitorOuter"]
-custom_minimum_size = Vector2(50, 0)
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 50.0
-grow_vertical = 2
-color = Color(0.282353, 0.282353, 0.282353, 1)
-
-[node name="Top" type="ColorRect" parent="Monitor/MonitorOuter"]
-custom_minimum_size = Vector2(0, 50)
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 50.0
-grow_horizontal = 2
-color = Color(0.282353, 0.282353, 0.282353, 1)
-
-[node name="Bottom" type="ColorRect" parent="Monitor/MonitorOuter"]
-custom_minimum_size = Vector2(0, 50)
-anchors_preset = 12
+[node name="ArrowRight" type="TextureButton" parent="Canvas"]
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
-grow_horizontal = 2
+offset_left = 100.0
+offset_top = -105.0
+offset_right = 104.0
+offset_bottom = -98.0
 grow_vertical = 0
-color = Color(0.282353, 0.282353, 0.282353, 1)
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_e68r7")
+flip_h = true
 
-[node name="AndromedaButton" type="TextureButton" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -252.0
-offset_top = -180.0
-offset_right = 252.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("1_ur3en")
+[node name="Selector" parent="." instance=ExtResource("3_e42j6")]
 
-[node name="MilkyWayButton" type="TextureButton" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 3588.0
-offset_top = -180.0
-offset_right = 4092.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("1_ur3en")
-
-[node name="SomeGalaxyButton" type="TextureButton" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 7428.0
-offset_top = -180.0
-offset_right = 7932.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("1_ur3en")
-
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -74.5
-offset_top = 200.0
-offset_right = 74.5
-offset_bottom = 223.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_e42j6")
-text = "Andromeda Galaxy"
-
-[node name="Label2" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 3765.5
-offset_top = 200.0
-offset_right = 3914.5
-offset_bottom = 223.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_e42j6")
-text = "Milkyway"
-
-[node name="Label3" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 7605.5
-offset_top = 200.0
-offset_right = 7754.5
-offset_bottom = 223.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_e42j6")
-text = "Some Galaxy"
-
-[connection signal="pressed" from="AndromedaButton" to="." method="_on_andromeda_button_pressed"]
-[connection signal="pressed" from="MilkyWayButton" to="." method="_on_milky_way_button_pressed"]
-[connection signal="pressed" from="SomeGalaxyButton" to="." method="_on_some_galaxy_button_pressed"]
+[connection signal="pressed" from="Canvas/ArrowBack" to="." method="_on_arrow_back_pressed"]
+[connection signal="pressed" from="Canvas/ArrowLeft" to="." method="_on_arrow_left_pressed"]
+[connection signal="pressed" from="Canvas/ArrowRight" to="." method="_on_arrow_right_pressed"]
