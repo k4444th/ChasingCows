@@ -2,7 +2,7 @@ extends Camera2D
 
 var inputDirection := Vector2(0, 0)
 
-@export var speed: int
+@export var speed: int = 50
 
 func _process(_delta: float) -> void:
 	getKeyboardInputs()

@@ -1,39 +1,22 @@
 extends Node2D
 
-@export var cameraZoom := Vector2()
+
+@export var cameraStartZoom := Vector2(0, 0)
 
 @onready var camera := $Camera
-@onready var galaxyInformation := $Canvas/Container/GalaxyInformation
-@onready var galaxyInformationTitle := $Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer/GalaxyName
-@onready var galaxyInformationText := $Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer/MarginContainer/GalaxyInfo
+@onready var galaxyInformation := $GalaxyInformation
+@onready var galaxyInformationTitle := $GalaxyInformation/Container/ColorRect/MarginContainer/VBoxContainer/GalaxyName
+@onready var galaxyInformationText := $GalaxyInformation/Container/ColorRect/MarginContainer/VBoxContainer/MarginContainer/GalaxyInfo
 
-func _ready() -> void:
-	camera.zoom = cameraZoom
-	galaxyInformation.visible = false
-	zoomCameraView()
-
-func _on_arrow_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
-func _on_andromeda_button_pressed() -> void:
-	print("Change to andromeda galaxy scene")
-
-func _on_andromeda_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Andromeda")
-
-func _on_andromeda_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
-
-func _on_milky_way_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/level.tscn")
-
-func _on_milky_way_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("MilkyWay")
-
-func _on_milky_way_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+@onready var galaxyPositions = {
+	"Andromeda": $Galaxies/AndromedaButton.position,
+	"MilkyWay": $Galaxies/MilkyWayButton.position,
+	"Hangay": $Galaxies/HangayButton.position,
+	"Fornax": $Galaxies/FornaxButton.position,
+	"Triangulum": $Galaxies/TriangulumButton.position,
+	"AbsanthaGom": $"Galaxies/Absantha-GomButton".position,
+	"AbsanthaShad": $"Galaxies/Absantha-ShadButtton".position
+}
 
 func setInformtion(GalaxyName: String):
 	if GalaxyName == "Andromeda":
@@ -47,11 +30,119 @@ func setInformtion(GalaxyName: String):
 		galaxyInformationTitle.text = "Milky Way"
 		galaxyInformationText.text = "Home of said cow\n" \
 			+ "Travel Costs: ___\n"
-	
+
+	elif GalaxyName == "Hangay":
+		galaxyInformationTitle.text = "Hangay"
+		galaxyInformationText.text = "Unreachable\n"
+
+	elif GalaxyName == "Fornax":
+		galaxyInformationTitle.text = "Fornax"
+		galaxyInformationText.text = "Unreachable\n"
+
+	elif GalaxyName == "Triangulum":
+		galaxyInformationTitle.text = "Triangulum"
+		galaxyInformationText.text = "Unreachable\n"
+
+	elif GalaxyName == "Absantha-Gom":
+		galaxyInformationTitle.text = "Absantha-Gom"
+		galaxyInformationText.text = "Unreachable\n"
+
+	elif GalaxyName == "Absantha-Shad":
+		galaxyInformationTitle.text = "Absantha-Shad"
+		galaxyInformationText.text = "Unreachable\n"
+
 	else:
 		galaxyInformationTitle.text = "Unknown Galaxy"
-		galaxyInformationText.text = ""
+		galaxyInformationText.text = "No Information given"
 
-func zoomCameraView():
-	var tween = get_tree().create_tween()
-	tween.tween_property(camera, "zoom", Vector2(1, 1), 2.5).set_trans(Tween.TRANS_QUAD)
+func zoomInCameraView(pos):
+	var tween1 = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	tween1.tween_property(camera, "zoom", Vector2(1, 1), 2.5).set_trans(Tween.TRANS_QUAD)
+	tween2.tween_property(camera, "position", pos, 2.5).set_trans(Tween.TRANS_QUAD)
+	await tween1.finished
+
+func zoomOutCameraView():
+	var tween1 = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	tween1.tween_property(camera, "zoom", cameraStartZoom, 2.5).set_trans(Tween.TRANS_QUAD)
+	tween2.tween_property(camera, "position", Vector2(0, 0), 2.5).set_trans(Tween.TRANS_QUAD)
+
+func _ready() -> void:
+	camera.zoom = cameraStartZoom
+	camera.position = Vector2(0, 0)
+	galaxyInformation.visible = false
+
+func _on_arrow_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+func _on_andromeda_button_pressed() -> void:
+	print("Change to Andromeda galaxy scene")
+
+func _on_andromeda_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Andromeda")
+
+func _on_andromeda_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+	zoomOutCameraView()
+
+func _on_milky_way_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")
+
+func _on_milky_way_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("MilkyWay")
+
+func _on_milky_way_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+
+func _on_hangay_button_pressed() -> void:
+	print("Change to Hangay galaxy scene")
+
+func _on_hangay_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Hangay")
+
+func _on_hangay_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+
+func _on_fornax_button_pressed() -> void:
+	print("Change to Fornax galaxy scene")
+
+func _on_fornax_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Fornax")
+
+func _on_fornax_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+
+func _on_triangulum_button_pressed() -> void:
+	print("Change to Triangulum galaxy scene")
+
+func _on_triangulum_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Triangulum")
+
+func _on_triangulum_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+
+func _on_absantha_gom_button_pressed() -> void:
+	print("Change to Absantha-Gom galaxy scene")
+
+func _on_absantha_gom_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Absantha-Gom")
+
+func _on_absantha_gom_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+
+func _on_absantha_shad_buttton_pressed() -> void:
+	print("Change to Absantha-Shad galaxy scene")
+
+func _on_absantha_shad_buttton_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Absantha-Shad")
+
+func _on_absantha_shad_buttton_mouse_exited() -> void:
+	galaxyInformation.visible = false

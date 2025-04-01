@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://5ft334wpbpnb"]
+[gd_scene load_steps=9 format=3 uid="uid://5ft334wpbpnb"]
 
 [ext_resource type="Script" uid="uid://v8udr7u8ofu5" path="res://Scenes/galaxy_menu.gd" id="1_6p5vi"]
 [ext_resource type="Texture2D" uid="uid://c505qphnepdhb" path="res://Graphics/Galaxies/AndromedaGalaxy.png" id="1_igu4c"]
 [ext_resource type="FontFile" uid="uid://duag8pn7aovn1" path="res://Fonts/pixelFont.ttf" id="2_7v4jd"]
 [ext_resource type="PackedScene" uid="uid://b3d7kglh0ux62" path="res://Scenes/camera.tscn" id="4_6xwkb"]
 [ext_resource type="Texture2D" uid="uid://cedkorxao73t1" path="res://Graphics/General/ArrowBack.png" id="4_63ge7"]
+[ext_resource type="Texture2D" uid="uid://bw00m7oscs17b" path="res://Graphics/Galaxies/MilkyWay.png" id="5_akqyu"]
+[ext_resource type="Texture2D" uid="uid://c7jpntuat4v6b" path="res://Graphics/General/Placeholder.png" id="6_2r04r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_63ge7"]
 line_spacing = 7.5
@@ -14,12 +16,12 @@ font_size = 25
 
 [node name="GalaxyMenu" type="Node2D"]
 script = ExtResource("1_6p5vi")
-cameraZoom = Vector2(0.1, 0.1)
+cameraStartZoom = Vector2(0.1, 0.1)
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Background" type="ColorRect" parent="Background"]
+[node name="Background" type="ColorRect" parent="Canvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0196078, 0.0784314, 0.196078, 1)
 
-[node name="ArrowBackButton" type="TextureButton" parent="Background"]
+[node name="ArrowBackButton" type="TextureButton" parent="Canvas"]
 offset_left = 40.0
 offset_top = 40.0
 offset_right = 552.0
@@ -35,66 +37,59 @@ offset_bottom = 552.0
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("4_63ge7")
 
-[node name="Canvas" type="CanvasLayer" parent="."]
+[node name="GalaxyInformation" type="CanvasLayer" parent="."]
 layer = 0
 
-[node name="Container" type="Container" parent="Canvas"]
+[node name="Container" type="Container" parent="GalaxyInformation"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
 
-[node name="GalaxyInformation" type="Node2D" parent="Canvas/Container"]
-position = Vector2(-540, 40)
-
-[node name="ColorRect" type="ColorRect" parent="Canvas/Container/GalaxyInformation"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_right = 500.0
-offset_bottom = 1000.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 3
+[node name="ColorRect" type="ColorRect" parent="GalaxyInformation/Container"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 1000)
+layout_mode = 2
 color = Color(0.0196078, 0.737255, 0.858824, 0.313726)
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/Container/GalaxyInformation/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="GalaxyInformation/Container/ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -250.0
 offset_right = 250.0
-offset_bottom = 760.0
+offset_bottom = 785.0
 grow_horizontal = 2
-scale = Vector2(1.00191, 1)
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GalaxyInformation/Container/ColorRect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="GalaxyName" type="Label" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer"]
+[node name="GalaxyName" type="Label" parent="GalaxyInformation/Container/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_7v4jd")
 theme_override_font_sizes/font_size = 40
 text = "Title"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GalaxyInformation/Container/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 25
 
-[node name="GalaxyInfo" type="Label" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="GalaxyInfo" type="Label" parent="GalaxyInformation/Container/ColorRect/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 650)
 layout_mode = 2
 size_flags_vertical = 3
@@ -109,33 +104,79 @@ text_overrun_behavior = 4
 [node name="Galaxies" type="Node" parent="."]
 
 [node name="AndromedaButton" type="TextureButton" parent="Galaxies"]
-offset_left = 439.0
-offset_top = 516.0
-offset_right = 632.0
-offset_bottom = 622.0
+offset_left = -6120.0
+offset_top = -2738.0
+offset_right = -5927.0
+offset_bottom = -2632.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("1_igu4c")
 
 [node name="MilkyWayButton" type="TextureButton" parent="Galaxies"]
-offset_left = 1638.0
-offset_top = -362.0
-offset_right = 1831.0
-offset_bottom = -256.0
+offset_left = -2220.0
+offset_top = -125.0
+offset_right = -1979.0
+offset_bottom = 11.0
 scale = Vector2(2.5, 2.5)
-texture_normal = ExtResource("1_igu4c")
+texture_normal = ExtResource("5_akqyu")
+
+[node name="HangayButton" type="TextureButton" parent="Galaxies"]
+offset_left = -5961.0
+offset_top = 3918.0
+offset_right = -5457.0
+offset_bottom = 4278.0
+texture_normal = ExtResource("6_2r04r")
+
+[node name="FornaxButton" type="TextureButton" parent="Galaxies"]
+offset_left = 4320.0
+offset_top = 2752.0
+offset_right = 4824.0
+offset_bottom = 3112.0
+texture_normal = ExtResource("6_2r04r")
+
+[node name="TriangulumButton" type="TextureButton" parent="Galaxies"]
+offset_left = 2712.0
+offset_top = -989.0
+offset_right = 3216.0
+offset_bottom = -629.0
+texture_normal = ExtResource("6_2r04r")
+
+[node name="Absantha-GomButton" type="TextureButton" parent="Galaxies"]
+offset_left = 6928.0
+offset_top = -3129.0
+offset_right = 7432.0
+offset_bottom = -2769.0
+texture_normal = ExtResource("6_2r04r")
+
+[node name="Absantha-ShadButtton" type="TextureButton" parent="Galaxies"]
+offset_left = 7294.0
+offset_top = -3344.0
+offset_right = 7798.0
+offset_bottom = -2984.0
+texture_normal = ExtResource("6_2r04r")
 
 [node name="Camera" parent="." instance=ExtResource("4_6xwkb")]
-offset = Vector2(960, 540)
 position_smoothing_enabled = true
 speed = 25
 
-[connection signal="pressed" from="Background/ArrowBackButton" to="." method="_on_arrow_back_button_pressed"]
+[connection signal="pressed" from="Canvas/ArrowBackButton" to="." method="_on_arrow_back_button_pressed"]
 [connection signal="mouse_entered" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_mouse_entered"]
 [connection signal="mouse_exited" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_mouse_exited"]
 [connection signal="pressed" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_pressed"]
 [connection signal="mouse_entered" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_entered"]
-[connection signal="mouse_entered" from="Galaxies/MilkyWayButton" to="." method="_on_texture_button_mouse_entered"]
-[connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_exited"]
-[connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_andromeda_button_pressed"]
 [connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/HangayButton" to="." method="_on_hangay_button_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/HangayButton" to="." method="_on_hangay_button_mouse_exited"]
+[connection signal="pressed" from="Galaxies/HangayButton" to="." method="_on_hangay_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/FornaxButton" to="." method="_on_fornax_button_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/FornaxButton" to="." method="_on_fornax_button_mouse_exited"]
+[connection signal="pressed" from="Galaxies/FornaxButton" to="." method="_on_fornax_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/TriangulumButton" to="." method="_on_triangulum_button_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/TriangulumButton" to="." method="_on_triangulum_button_mouse_exited"]
+[connection signal="pressed" from="Galaxies/TriangulumButton" to="." method="_on_triangulum_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/Absantha-GomButton" to="." method="_on_absantha_gom_button_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/Absantha-GomButton" to="." method="_on_absantha_gom_button_mouse_exited"]
+[connection signal="pressed" from="Galaxies/Absantha-GomButton" to="." method="_on_absantha_gom_button_pressed"]
+[connection signal="mouse_entered" from="Galaxies/Absantha-ShadButtton" to="." method="_on_absantha_shad_buttton_mouse_entered"]
+[connection signal="mouse_exited" from="Galaxies/Absantha-ShadButtton" to="." method="_on_absantha_shad_buttton_mouse_exited"]
+[connection signal="pressed" from="Galaxies/Absantha-ShadButtton" to="." method="_on_absantha_shad_buttton_pressed"]

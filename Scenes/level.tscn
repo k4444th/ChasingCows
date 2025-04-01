@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bten20fw1763o"]
+[gd_scene load_steps=4 format=3 uid="uid://bten20fw1763o"]
 
 [ext_resource type="PackedScene" uid="uid://c6y1lwqp2jij5" path="res://Scenes/earth_tile_map.tscn" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://b4aj3fyrmyhe6" path="res://Scenes/cow.tscn" id="2_wrm1d"]
 
+[sub_resource type="GDScript" id="GDScript_k5f4k"]
+
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
+script = SubResource("GDScript_k5f4k")
 
 [node name="EarthTileMap" parent="." instance=ExtResource("1_qxrlw")]
 
