@@ -1,6 +1,7 @@
 extends Node2D
 
 var selected: TextureButton
+var transitionSpeed := 1.5
 
 @onready var selector := $Selector
 @onready var camera := $Camera
@@ -60,7 +61,7 @@ func setSelector(node: TextureButton):
 	selector.selectorPosition = node.position + node.size * (node.scale / 2)
 	selector.selectorSize = node.size * node.scale
 	var tween = get_tree().create_tween()
-	tween.tween_property(camera, "position", node.position + node.size * (node.scale / 2), 2.5).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
 
 func _on_andromeda_pressed() -> void:
 	setSelector(andromedaButton)

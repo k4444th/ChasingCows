@@ -32,6 +32,7 @@ offset_right = 44.0
 offset_bottom = 47.0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("3_e68r7")
+metadata/_edit_use_anchors_ = true
 
 [node name="ArrowLeft" type="TextureButton" parent="Canvas"]
 anchors_preset = 2
@@ -61,10 +62,10 @@ flip_h = true
 [node name="Galaxies" type="Node" parent="."]
 
 [node name="Andromeda" type="TextureButton" parent="Galaxies"]
-offset_left = -2762.0
-offset_top = -527.0
-offset_right = -2569.0
-offset_bottom = -421.0
+offset_left = -2550.0
+offset_top = -418.0
+offset_right = -2357.0
+offset_bottom = -312.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("4_e42j6")
 
@@ -75,6 +76,7 @@ offset_right = -158.0
 offset_bottom = -1201.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("4_hlybq")
+metadata/_edit_use_anchors_ = true
 
 [node name="HangayButton" type="TextureButton" parent="Galaxies"]
 offset_left = -1785.0
@@ -84,10 +86,10 @@ offset_bottom = 2015.0
 texture_normal = ExtResource("1_ur3en")
 
 [node name="FornaxButton" type="TextureButton" parent="Galaxies"]
-offset_left = 1957.0
-offset_top = 2029.0
-offset_right = 2461.0
-offset_bottom = 2389.0
+offset_left = 1336.0
+offset_top = 2138.0
+offset_right = 1840.0
+offset_bottom = 2498.0
 texture_normal = ExtResource("1_ur3en")
 
 [node name="TriangulumButton" type="TextureButton" parent="Galaxies"]
@@ -98,17 +100,17 @@ offset_bottom = -180.0
 texture_normal = ExtResource("1_ur3en")
 
 [node name="Absantha-GomButton" type="TextureButton" parent="Galaxies"]
-offset_left = 5406.0
-offset_top = -1673.0
-offset_right = 5910.0
-offset_bottom = -1313.0
+offset_left = 3939.0
+offset_top = 1050.0
+offset_right = 4443.0
+offset_bottom = 1410.0
 texture_normal = ExtResource("1_ur3en")
 
 [node name="Absantha-ShadButtton" type="TextureButton" parent="Galaxies"]
-offset_left = 5772.0
-offset_top = -1888.0
-offset_right = 6276.0
-offset_bottom = -1528.0
+offset_left = 4305.0
+offset_top = 835.0
+offset_right = 4809.0
+offset_bottom = 1195.0
 texture_normal = ExtResource("1_ur3en")
 
 [node name="Selector" parent="." instance=ExtResource("3_e42j6")]
