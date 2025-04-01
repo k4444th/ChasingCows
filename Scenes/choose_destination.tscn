@@ -1,22 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwlwcbtpff7op"]
+[gd_scene load_steps=7 format=3 uid="uid://dwlwcbtpff7op"]
 
 [ext_resource type="Script" uid="uid://dhtenvsyvyyff" path="res://Scenes/choose_destination.gd" id="1_e68r7"]
+[ext_resource type="Texture2D" uid="uid://c7jpntuat4v6b" path="res://Graphics/General/Placeholder.png" id="1_ur3en"]
 [ext_resource type="PackedScene" uid="uid://dk645f5lwtqt" path="res://Scenes/selector.tscn" id="3_e42j6"]
 [ext_resource type="Texture2D" uid="uid://cedkorxao73t1" path="res://Graphics/General/ArrowBack.png" id="3_e68r7"]
+[ext_resource type="Texture2D" uid="uid://c505qphnepdhb" path="res://Graphics/Galaxies/AndromedaGalaxy.png" id="4_e42j6"]
+[ext_resource type="Texture2D" uid="uid://bw00m7oscs17b" path="res://Graphics/Galaxies/MilkyWay.png" id="4_hlybq"]
 
 [node name="ChooseDestination" type="Node2D"]
 script = ExtResource("1_e68r7")
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-layer = -2
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Background" type="ColorRect" parent="Canvas"]
+[node name="Background" type="ColorRect" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.0017254
 color = Color(0.0196078, 0.0784314, 0.196078, 1)
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="ArrowBack" type="TextureButton" parent="Canvas"]
 offset_left = 40.0
@@ -51,8 +58,67 @@ scale = Vector2(10, 10)
 texture_normal = ExtResource("3_e68r7")
 flip_h = true
 
+[node name="Galaxies" type="Node" parent="."]
+
+[node name="Andromeda" type="TextureButton" parent="Galaxies"]
+offset_left = -2762.0
+offset_top = -527.0
+offset_right = -2569.0
+offset_bottom = -421.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("4_e42j6")
+
+[node name="MilkyWay" type="TextureButton" parent="Galaxies"]
+offset_left = -399.0
+offset_top = -1337.0
+offset_right = -158.0
+offset_bottom = -1201.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("4_hlybq")
+
+[node name="HangayButton" type="TextureButton" parent="Galaxies"]
+offset_left = -1785.0
+offset_top = 1655.0
+offset_right = -1281.0
+offset_bottom = 2015.0
+texture_normal = ExtResource("1_ur3en")
+
+[node name="FornaxButton" type="TextureButton" parent="Galaxies"]
+offset_left = 1957.0
+offset_top = 2029.0
+offset_right = 2461.0
+offset_bottom = 2389.0
+texture_normal = ExtResource("1_ur3en")
+
+[node name="TriangulumButton" type="TextureButton" parent="Galaxies"]
+offset_left = 2363.0
+offset_top = -540.0
+offset_right = 2867.0
+offset_bottom = -180.0
+texture_normal = ExtResource("1_ur3en")
+
+[node name="Absantha-GomButton" type="TextureButton" parent="Galaxies"]
+offset_left = 5406.0
+offset_top = -1673.0
+offset_right = 5910.0
+offset_bottom = -1313.0
+texture_normal = ExtResource("1_ur3en")
+
+[node name="Absantha-ShadButtton" type="TextureButton" parent="Galaxies"]
+offset_left = 5772.0
+offset_top = -1888.0
+offset_right = 6276.0
+offset_bottom = -1528.0
+texture_normal = ExtResource("1_ur3en")
+
 [node name="Selector" parent="." instance=ExtResource("3_e42j6")]
+z_index = 100
+position = Vector2(960, 540)
+
+[node name="Camera" type="Camera2D" parent="."]
 
 [connection signal="pressed" from="Canvas/ArrowBack" to="." method="_on_arrow_back_pressed"]
 [connection signal="pressed" from="Canvas/ArrowLeft" to="." method="_on_arrow_left_pressed"]
 [connection signal="pressed" from="Canvas/ArrowRight" to="." method="_on_arrow_right_pressed"]
+[connection signal="pressed" from="Galaxies/Andromeda" to="." method="_on_andromeda_pressed"]
+[connection signal="pressed" from="Galaxies/MilkyWay" to="." method="_on_milky_way_pressed"]
