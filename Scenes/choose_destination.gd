@@ -63,8 +63,5 @@ func setSelector(node: TextureButton):
 	var tween = get_tree().create_tween()
 	tween.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
 
-func _on_andromeda_pressed() -> void:
-	setSelector(andromedaButton)
-
 func _on_milky_way_pressed() -> void:
-	setSelector(milkyWayButton)
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")

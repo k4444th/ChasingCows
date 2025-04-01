@@ -122,5 +122,4 @@ position = Vector2(960, 540)
 [connection signal="pressed" from="Canvas/ArrowBack" to="." method="_on_arrow_back_pressed"]
 [connection signal="pressed" from="Canvas/ArrowLeft" to="." method="_on_arrow_left_pressed"]
 [connection signal="pressed" from="Canvas/ArrowRight" to="." method="_on_arrow_right_pressed"]
-[connection signal="pressed" from="Galaxies/Andromeda" to="." method="_on_andromeda_pressed"]
 [connection signal="pressed" from="Galaxies/MilkyWay" to="." method="_on_milky_way_pressed"]
