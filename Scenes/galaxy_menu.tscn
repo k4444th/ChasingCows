@@ -16,7 +16,6 @@ font_size = 25
 
 [node name="GalaxyMenu" type="Node2D"]
 script = ExtResource("1_6p5vi")
-cameraStartZoom = Vector2(0.1, 0.1)
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 layer = -1

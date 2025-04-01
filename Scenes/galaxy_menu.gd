@@ -1,7 +1,6 @@
 extends Node2D
 
-
-@export var cameraStartZoom := Vector2(0, 0)
+@export var cameraStartZoom := Vector2(0.1, 0.1)
 
 @onready var camera := $Camera
 @onready var galaxyInformation := $GalaxyInformation
@@ -60,7 +59,6 @@ func zoomInCameraView(pos):
 	var tween2 = get_tree().create_tween()
 	tween1.tween_property(camera, "zoom", Vector2(1, 1), 2.5).set_trans(Tween.TRANS_QUAD)
 	tween2.tween_property(camera, "position", pos, 2.5).set_trans(Tween.TRANS_QUAD)
-	await tween1.finished
 
 func zoomOutCameraView():
 	var tween1 = get_tree().create_tween()
@@ -80,69 +78,96 @@ func _on_andromeda_button_pressed() -> void:
 	print("Change to Andromeda galaxy scene")
 
 func _on_andromeda_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Andromeda")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.Andromeda)
+		setInformtion("Andromeda")
 
 func _on_andromeda_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
-	zoomOutCameraView()
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
 
 func _on_milky_way_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")
 
 func _on_milky_way_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("MilkyWay")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.MilkyWay)
+		setInformtion("MilkyWay")
 
 func _on_milky_way_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
 
 func _on_hangay_button_pressed() -> void:
 	print("Change to Hangay galaxy scene")
 
 func _on_hangay_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Hangay")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.Hangay)
+		setInformtion("Hangay")
 
 func _on_hangay_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
 
 func _on_fornax_button_pressed() -> void:
 	print("Change to Fornax galaxy scene")
 
 func _on_fornax_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Fornax")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.Fornax)
+		setInformtion("Fornax")
 
 func _on_fornax_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
 
 func _on_triangulum_button_pressed() -> void:
 	print("Change to Triangulum galaxy scene")
 
 func _on_triangulum_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Triangulum")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.Triangulum)
+		setInformtion("Triangulum")
 
 func _on_triangulum_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
 
 func _on_absantha_gom_button_pressed() -> void:
 	print("Change to Absantha-Gom galaxy scene")
 
 func _on_absantha_gom_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Absantha-Gom")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.AbsanthaGom)
+		setInformtion("Absantha-Gom")
 
 func _on_absantha_gom_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
 
 func _on_absantha_shad_buttton_pressed() -> void:
 	print("Change to Absantha-Shad galaxy scene")
 
 func _on_absantha_shad_buttton_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Absantha-Shad")
+	if camera.zoom <= cameraStartZoom:
+		galaxyInformation.visible = true
+		zoomInCameraView(galaxyPositions.AbsanthaShad)
+		setInformtion("Absantha-Shad")
 
 func _on_absantha_shad_buttton_mouse_exited() -> void:
-	galaxyInformation.visible = false
+	if camera.zoom.x >= 1:
+		galaxyInformation.visible = false
+		zoomOutCameraView()
