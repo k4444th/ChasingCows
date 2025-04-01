@@ -1,7 +1,7 @@
 extends Node2D
 
 var selected: TextureButton
-var transitionSpeed := 1.5
+var transitionSpeed := 2.5
 
 @onready var selector := $Selector
 @onready var camera := $Camera
@@ -60,8 +60,13 @@ func setSelector(node: TextureButton):
 	selected = node
 	selector.selectorPosition = node.position + node.size * (node.scale / 2)
 	selector.selectorSize = node.size * node.scale
-	var tween = get_tree().create_tween()
-	tween.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
+	var tweenPos = get_tree().create_tween()
+	var tweenZoom1 = get_tree().create_tween()
+	tweenPos.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
+	tweenZoom1.tween_property(camera, "zoom", Vector2(0.8, 0.8), transitionSpeed / 2).set_trans(Tween.TRANS_QUAD)
+	await tweenZoom1.finished
+	var tweenZoom2 = get_tree().create_tween()
+	tweenZoom2.tween_property(camera, "zoom", Vector2(1.0, 1.0), transitionSpeed / 2).set_trans(Tween.TRANS_QUAD)
 
 func _on_milky_way_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")
