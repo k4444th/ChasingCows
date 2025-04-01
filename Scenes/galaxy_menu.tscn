@@ -14,7 +14,7 @@ font_size = 25
 
 [node name="GalaxyMenu" type="Node2D"]
 script = ExtResource("1_6p5vi")
-cameraZoom = Vector2(1, 1)
+cameraZoom = Vector2(0.1, 0.1)
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -87,7 +87,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_7v4jd")
 theme_override_font_sizes/font_size = 40
-text = "Andromeda Galaxy"
+text = "Title"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Canvas/Container/GalaxyInformation/ColorRect/MarginContainer/VBoxContainer"]
@@ -100,11 +100,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_7v4jd")
 theme_override_font_sizes/font_size = 25
-text = "Your Home Galaxy
-Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto propter ut materia. Quam quo aliquip, officii voluptatem. Qui pariatur officii eos. 
-Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto propter ut materia. Quam quo aliquip, officii voluptatem. Qui pariatur officii eos. 
-Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto propter ut materia. Quam quo aliquip, officii voluptatem. Qui pariatur officii eos. 
-"
+text = "Some desctiption (Is set in code)"
 label_settings = SubResource("LabelSettings_63ge7")
 autowrap_mode = 2
 clip_text = true
@@ -113,18 +109,18 @@ text_overrun_behavior = 4
 [node name="Galaxies" type="Node" parent="."]
 
 [node name="AndromedaButton" type="TextureButton" parent="Galaxies"]
-offset_left = 106.0
-offset_top = 750.0
-offset_right = 299.0
-offset_bottom = 856.0
+offset_left = 439.0
+offset_top = 516.0
+offset_right = 632.0
+offset_bottom = 622.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("1_igu4c")
 
 [node name="MilkyWayButton" type="TextureButton" parent="Galaxies"]
-offset_left = 600.0
-offset_top = 300.0
-offset_right = 793.0
-offset_bottom = 406.0
+offset_left = 1638.0
+offset_top = -362.0
+offset_right = 1831.0
+offset_bottom = -256.0
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("1_igu4c")
 
@@ -139,7 +135,7 @@ speed = 25
 [connection signal="pressed" from="Galaxies/AndromedaButton" to="." method="_on_andromeda_button_pressed"]
 [connection signal="mouse_entered" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_entered"]
 [connection signal="mouse_entered" from="Galaxies/MilkyWayButton" to="." method="_on_texture_button_mouse_entered"]
-[connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_exited"]
 [connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_texture_button_mouse_exited"]
-[connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_pressed"]
+[connection signal="mouse_exited" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_mouse_exited"]
 [connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_andromeda_button_pressed"]
+[connection signal="pressed" from="Galaxies/MilkyWayButton" to="." method="_on_milky_way_button_pressed"]

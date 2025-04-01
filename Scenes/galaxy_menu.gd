@@ -10,7 +10,30 @@ extends Node2D
 func _ready() -> void:
 	camera.zoom = cameraZoom
 	galaxyInformation.visible = false
-	
+	zoomCameraView()
+
+func _on_arrow_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+func _on_andromeda_button_pressed() -> void:
+	print("Change to andromeda galaxy scene")
+
+func _on_andromeda_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("Andromeda")
+
+func _on_andromeda_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
+
+func _on_milky_way_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")
+
+func _on_milky_way_button_mouse_entered() -> void:
+	galaxyInformation.visible = true
+	setInformtion("MilkyWay")
+
+func _on_milky_way_button_mouse_exited() -> void:
+	galaxyInformation.visible = false
 
 func setInformtion(GalaxyName: String):
 	if GalaxyName == "Andromeda":
@@ -29,25 +52,6 @@ func setInformtion(GalaxyName: String):
 		galaxyInformationTitle.text = "Unknown Galaxy"
 		galaxyInformationText.text = ""
 
-func _on_arrow_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
-func _on_andromeda_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_andromeda_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("Andromeda")
-
-func _on_andromeda_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
-
-func _on_milky_way_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/level.tscn")
-
-func _on_milky_way_button_mouse_entered() -> void:
-	galaxyInformation.visible = true
-	setInformtion("MilkyWay")
-
-func _on_milky_way_button_mouse_exited() -> void:
-	galaxyInformation.visible = false
+func zoomCameraView():
+	var tween = get_tree().create_tween()
+	tween.tween_property(camera, "zoom", Vector2(1, 1), 2.5).set_trans(Tween.TRANS_QUAD)
