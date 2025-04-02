@@ -15,7 +15,15 @@ var transitionSpeed := 2.5
 @onready var absanthaShadButton := $"Galaxies/Absantha-ShadButtton"
 
 func _ready() -> void:
-	setSelector(andromedaButton)
+	var node = andromedaButton
+	selected = node
+	selector.selectorPosition = node.position + node.size * (node.scale / 2)
+	selector.selectorSize = node.size * node.scale
+	var tweenPos = get_tree().create_tween()
+	var tweenZoom = get_tree().create_tween()
+	tweenPos.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
+	tweenZoom.tween_property(camera, "zoom", Vector2(1.0, 1.0), transitionSpeed).set_trans(Tween.TRANS_QUAD)
+
 
 func _on_arrow_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
