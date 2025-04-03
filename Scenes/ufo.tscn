@@ -25,6 +25,14 @@ points = PackedVector2Array(10, -10, -10, 0)
 width = 2.5
 default_color = Color(1, 0, 0, 1)
 
+[node name="Circle" type="Line2D" parent="Cross"]
+position = Vector2(0, -59)
+points = PackedVector2Array(0, 36, 20, 40, 28, 54, 20, 68, 0, 72, -20, 68, -28, 54, -20, 40)
+closed = true
+width = 2.5
+default_color = Color(0.172549, 0.752941, 1, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, 75)
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
