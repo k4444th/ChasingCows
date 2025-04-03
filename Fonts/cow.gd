@@ -8,6 +8,10 @@ var state := "standing"
 @export var speed := 50
 
 func _process(_delta: float) -> void:
+	if Input.is_action_pressed("Beam"):
+		$AnimatedSprite2D.scale -= Vector2(0.005, 0.005)
+	elif Input.is_action_just_released("Beam"):
+		$AnimatedSprite2D.scale = Vector2(1, 1)
 	# getKeyboardInputs()
 	setDirection()
 	moveSprite()

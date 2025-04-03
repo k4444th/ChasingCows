@@ -5,6 +5,8 @@ var direction := Vector2(0.0, 0.0)
 
 @export var speed := 100
 
+@onready var beam := $Beam/Beam
+
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("Beam"):
 		$Beam/Beam.visible = true

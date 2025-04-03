@@ -16,16 +16,14 @@ z_index = 50
 position = Vector2(0, 200)
 
 [node name="Line1" type="Line2D" parent="Beam"]
-visible = false
 points = PackedVector2Array(-10, -10, 10, 0)
 width = 2.5
-default_color = Color(1, 0, 0, 1)
+default_color = Color(0.172549, 0.752941, 1, 1)
 
 [node name="Line2" type="Line2D" parent="Beam"]
-visible = false
 points = PackedVector2Array(10, -10, -10, 0)
 width = 2.5
-default_color = Color(1, 0, 0, 1)
+default_color = Color(0.172549, 0.752941, 1, 1)
 
 [node name="Beam" type="Polygon2D" parent="Beam"]
 visible = false
