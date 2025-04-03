@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwlwcbtpff7op"]
+[gd_scene load_steps=8 format=3 uid="uid://dwlwcbtpff7op"]
 
 [ext_resource type="Script" uid="uid://dhtenvsyvyyff" path="res://Scenes/galaxy_menu.gd" id="1_e68r7"]
 [ext_resource type="Texture2D" uid="uid://c7jpntuat4v6b" path="res://Graphics/General/Placeholder.png" id="1_ur3en"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cedkorxao73t1" path="res://Graphics/General/ArrowBack.png" id="3_e68r7"]
 [ext_resource type="Texture2D" uid="uid://c505qphnepdhb" path="res://Graphics/Galaxies/AndromedaGalaxy.png" id="4_e42j6"]
 [ext_resource type="Texture2D" uid="uid://bw00m7oscs17b" path="res://Graphics/Galaxies/MilkyWay.png" id="4_hlybq"]
+[ext_resource type="PackedScene" uid="uid://bs0srje5vcnj3" path="res://Scenes/information.tscn" id="7_2r04r"]
 
 [node name="ChooseDestination" type="Node2D"]
 script = ExtResource("1_e68r7")
@@ -129,12 +130,12 @@ offset_bottom = 540.0
 texture_normal = ExtResource("1_ur3en")
 metadata/_edit_use_anchors_ = true
 
-[node name="Lines" type="Node2D" parent="."]
-z_index = -100
-
 [node name="Selector" parent="." instance=ExtResource("3_e42j6")]
 z_index = 100
 position = Vector2(960, 540)
+
+[node name="Information" parent="." instance=ExtResource("7_2r04r")]
+visible = false
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
@@ -149,4 +150,3 @@ zoom = Vector2(0.2, 0.2)
 [connection signal="pressed" from="Galaxies/TriangulumButton" to="." method="_on_triangulum_button_pressed"]
 [connection signal="pressed" from="Galaxies/Absantha-GomButton" to="." method="_on_absantha_gom_button_pressed"]
 [connection signal="pressed" from="Galaxies/Absantha-ShadButtton" to="." method="_on_absantha_shad_buttton_pressed"]
-[connection signal="draw" from="Lines" to="." method="_on_lines_draw"]

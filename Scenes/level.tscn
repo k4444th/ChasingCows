@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bten20fw1763o"]
+[gd_scene load_steps=5 format=3 uid="uid://bten20fw1763o"]
 
+[ext_resource type="Script" uid="uid://1gnyshsj36em" path="res://Scenes/level.gd" id="1_81xng"]
 [ext_resource type="PackedScene" uid="uid://c6y1lwqp2jij5" path="res://Scenes/earth_tile_map.tscn" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://b4aj3fyrmyhe6" path="res://Scenes/cow.tscn" id="2_wrm1d"]
-
-[sub_resource type="GDScript" id="GDScript_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://dvm82i8tbhoue" path="res://Scenes/ufo.tscn" id="3_6phgx"]
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
-script = SubResource("GDScript_k5f4k")
+script = ExtResource("1_81xng")
 
 [node name="EarthTileMap" parent="." instance=ExtResource("1_qxrlw")]
 
 [node name="Cow" parent="." instance=ExtResource("2_wrm1d")]
+
+[node name="UFO" parent="." instance=ExtResource("3_6phgx")]
+position = Vector2(0, -150)

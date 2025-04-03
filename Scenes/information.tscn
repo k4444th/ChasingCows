@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs0srje5vcnj3"]
+
+[ext_resource type="Script" uid="uid://b3la77chf5lsc" path="res://Scenes/information.gd" id="1_cv4lj"]
+
+[node name="Information" type="Node2D"]
+script = ExtResource("1_cv4lj")
+
+[node name="InfoPopup" type="Line2D" parent="."]
+z_index = 100
+points = PackedVector2Array(0, 0, 500, 0, 500, 500, 0, 500, 0, 0)
+closed = true
+default_color = Color(0.592157, 0.752941, 0.356863, 1)

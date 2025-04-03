@@ -7,23 +7,27 @@
 script = ExtResource("1_q57ui")
 
 [node name="TopLeft" type="Sprite2D" parent="."]
+z_index = 100
 position = Vector2(-50, -50)
 scale = Vector2(5, 5)
 texture = ExtResource("1_22fom")
 
 [node name="TopRight" type="Sprite2D" parent="."]
+z_index = 100
 position = Vector2(50, -50)
 scale = Vector2(5, 5)
 texture = ExtResource("1_22fom")
 flip_h = true
 
 [node name="BottomLeft" type="Sprite2D" parent="."]
+z_index = 100
 position = Vector2(-50, 50)
 scale = Vector2(5, 5)
 texture = ExtResource("1_22fom")
 flip_v = true
 
 [node name="BottomRight" type="Sprite2D" parent="."]
+z_index = 100
 position = Vector2(50, 50)
 scale = Vector2(5, 5)
 texture = ExtResource("1_22fom")

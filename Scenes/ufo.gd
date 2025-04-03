@@ -2,13 +2,11 @@ extends CharacterBody2D
 
 var keyboardInputDirections := Vector2(0.0, 0.0)
 var direction := Vector2(0.0, 0.0)
-var lastDirection := "front_right"
-var state := "standing"
 
-@export var speed := 50
+@export var speed := 100
 
 func _process(_delta: float) -> void:
-	# getKeyboardInputs()
+	getKeyboardInputs()
 	setDirection()
 	moveSprite()
 
@@ -20,7 +18,6 @@ func setDirection():
 	if keyboardInputDirections.x == 0 and keyboardInputDirections.y == 0:
 		direction.x = 0
 		direction.y = 0
-		state = "standing"
 	else:
 		if (keyboardInputDirections.x > 0 and keyboardInputDirections.y >= 0):
 			direction.x = keyboardInputDirections.x
@@ -34,22 +31,7 @@ func setDirection():
 		elif (keyboardInputDirections.x <= 0 and keyboardInputDirections.y > 0):
 			direction.x = -keyboardInputDirections.y
 			direction.y = keyboardInputDirections.y / 2
-		
-		state = "walking"
-		setFacingDirection()
 	
-	$AnimatedSprite2D.animation = state + "_" + lastDirection
-
-func setFacingDirection():
-	if (direction.x > 0 and direction.y >= 0):
-		lastDirection = "front_right"
-	elif (direction.x <= 0 and direction.y <= 0):
-		lastDirection = "back_left"
-	elif (direction.x >= 0 and direction.y < 0):
-		lastDirection = "back_right"
-	elif (direction.x <= 0 and direction.y > 0):
-		lastDirection = "front_left"
-
 func moveSprite():
 	velocity = direction * speed
 	move_and_slide()

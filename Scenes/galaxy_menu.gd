@@ -2,8 +2,10 @@ extends Node2D
 
 var selected: TextureButton
 var transitionSpeed := 2.5
+var margin := Vector2(100, 100)
 
 @onready var selector := $Selector
+@onready var information := $Information
 @onready var camera := $Camera
 
 @onready var andromedaButton := $Galaxies/Andromeda
@@ -15,15 +17,7 @@ var transitionSpeed := 2.5
 @onready var absanthaShadButton := $"Galaxies/Absantha-ShadButtton"
 
 func _ready() -> void:
-	var node = andromedaButton
-	selected = node
-	selector.selectorPosition = node.position + node.size * (node.scale / 2)
-	selector.selectorSize = node.size * node.scale
-	var tweenPos = get_tree().create_tween()
-	var tweenZoom = get_tree().create_tween()
-	tweenPos.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
-	tweenZoom.tween_property(camera, "zoom", Vector2(1.0, 1.0), transitionSpeed).set_trans(Tween.TRANS_QUAD)
-
+	setSelector(andromedaButton, true)
 
 func _on_arrow_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
@@ -64,17 +58,27 @@ func _on_arrow_right_pressed() -> void:
 	else:
 		setSelector(andromedaButton)
 
-func setSelector(node: TextureButton):
+func setSelector(node: TextureButton, starting := false):
 	selected = node
-	selector.selectorPosition = node.position + node.size * (node.scale / 2)
+		
+	var newPos := node.position + node.size * (node.scale / 2)
+	
+	selector.selectorPosition = newPos
+	information.centerPosition = newPos
+	
 	selector.selectorSize = node.size * node.scale
 	var tweenPos = get_tree().create_tween()
-	var tweenZoom1 = get_tree().create_tween()
-	tweenPos.tween_property(camera, "position", node.position + node.size * (node.scale / 2), transitionSpeed).set_trans(Tween.TRANS_QUAD)
-	tweenZoom1.tween_property(camera, "zoom", Vector2(0.8, 0.8), transitionSpeed / 2).set_trans(Tween.TRANS_QUAD)
-	await tweenZoom1.finished
-	var tweenZoom2 = get_tree().create_tween()
-	tweenZoom2.tween_property(camera, "zoom", Vector2(1.0, 1.0), transitionSpeed / 2).set_trans(Tween.TRANS_QUAD)
+	tweenPos.tween_property(camera, "position", newPos, transitionSpeed).set_trans(Tween.TRANS_QUAD)
+	
+	if starting:
+		var tweenZoom = get_tree().create_tween()
+		tweenZoom.tween_property(camera, "zoom", Vector2(1, 1), transitionSpeed).set_trans(Tween.TRANS_QUAD)
+	else:
+		var tweenZoom1 = get_tree().create_tween()
+		tweenZoom1.tween_property(camera, "zoom", Vector2(0.8, 0.8), transitionSpeed / 2).set_trans(Tween.TRANS_QUAD)
+		await tweenZoom1.finished
+		var tweenZoom2 = get_tree().create_tween()
+		tweenZoom2.tween_property(camera, "zoom", Vector2(1.0, 1.0), transitionSpeed / 2).set_trans(Tween.TRANS_QUAD)
 
 func _on_milky_way_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")
