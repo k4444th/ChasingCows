@@ -13,8 +13,10 @@ script = ExtResource("1_81xng")
 [node name="EarthTileMap" parent="." instance=ExtResource("1_qxrlw")]
 
 [node name="Cow" parent="." instance=ExtResource("2_wrm1d")]
+collision_mask = 2
 
 [node name="Indicator" parent="." instance=ExtResource("5_wqkje")]
+collision_layer = 2
 
 [node name="UFO" parent="." instance=ExtResource("3_6phgx")]
 position = Vector2(0, -750)

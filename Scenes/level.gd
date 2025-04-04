@@ -18,13 +18,12 @@ func _ready() -> void:
 	indicator.gameRunning = true
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("Beam"):
-		if lastCowYPos < 0:
-			lastCowYPos = cow.position.y
-			cow.get_node("CollisionShape2D").disabled = true
-		if cow.position.y > ufo.position.y:
-			cow.position.y -= 3
-	elif Input.is_action_just_released("Beam"):
-		cow.position.y = lastCowYPos
-		cow.get_node("CollisionShape2D").disabled = false
-		lastCowYPos = -10
+	if cow.canBeam:
+		if Input.is_action_pressed("Beam"):
+			if lastCowYPos < 0:
+				lastCowYPos = cow.position.y
+			if cow.position.y > ufo.position.y:
+				cow.position.y -= 3
+		elif Input.is_action_just_released("Beam"):
+			cow.position.y = lastCowYPos
+			lastCowYPos = -10
