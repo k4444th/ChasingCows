@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var keyboardInputDirections := Vector2(0.0, 0.0)
 var direction := Vector2(0.0, 0.0)
+var tileSize := Vector2(32, 16)
 
 @export var speed := 100
 
@@ -44,7 +45,7 @@ func setDirection():
 		elif (keyboardInputDirections.x > 0 and keyboardInputDirections.y < 0):
 			direction.x = - keyboardInputDirections.x * keyboardInputDirections.y
 			direction.y = 0
-	
+		
 func moveSprite():
 	velocity = direction * speed
 	move_and_slide()

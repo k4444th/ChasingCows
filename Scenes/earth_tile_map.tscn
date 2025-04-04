@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6y1lwqp2jij5"]
 
 [ext_resource type="Texture2D" uid="uid://tq0vfe8ytb7y" path="res://Graphics/Earth Tile Map/Earth_Map.png" id="1_g0m5n"]
+[ext_resource type="Script" uid="uid://bi5etx0urslvr" path="res://Scenes/earth_tile_map.gd" id="2_tx6hy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ytx1f"]
 texture = ExtResource("1_g0m5n")
@@ -112,67 +113,6 @@ tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ytx1f")
 
-[sub_resource type="GDScript" id="GDScript_xuua0"]
-script/source = "extends TileMap
-
-var borderAtlasCoords = Vector2i(0, 3)
-var oceanAtlasCoords = Vector2i(15, 2)
-var worldOrigin := Vector2i(0, 0)
-var oceanRadius := 0
-
-@export var oceanBorderWidth: int = 50
-
-const PI = 3.1415926525
-
-enum layers {
-	ocean  = 0,
-	ground = 1,
-	mountain1 = 2
-}
-
-var offsets := [
-	Vector2i(1, 0),
-	Vector2i(-1, 0),
-	Vector2i(0, 1),
-	Vector2i(0, -1)
-]
-
-func _ready() -> void:
-	oceanRadius = findBoundaries()
-	setBoundaries()
-	placeOcean()
-
-func findBoundaries() -> int:
-	var maxPos = 0
-	var usedCells = get_used_cells(layers.ocean)
-	
-	for cell in usedCells:
-		if abs(cell.x) > maxPos or abs(cell.y) > maxPos:
-			maxPos = cell.x if cell.x >= cell.y else cell.y
-	
-	return maxPos + oceanBorderWidth
-
-func placeOcean():
-	for x in range(worldOrigin.x - oceanRadius, worldOrigin.x + oceanRadius):
-		for y in range(worldOrigin.y - oceanRadius, worldOrigin.y + oceanRadius):
-			var currentCell := Vector2i(x, y)
-			if isCellInCircle(currentCell, worldOrigin, oceanRadius):
-				set_cell(layers.ocean, currentCell, 0, oceanAtlasCoords)
-
-func isCellInCircle(cell: Vector2i, origin: Vector2i, radius: int) -> bool:
-	var dx := origin.x - cell.x
-	var dy := origin.y - cell.y
-	return pow(dx, 2) + pow(dy, 2) < pow(radius, 2)
-
-func setBoundaries():
-	var usedCells = get_used_cells(layers.ground)
-	for cell in usedCells:
-		for offset in offsets:
-			var currentCell = cell + offset
-			if get_cell_source_id(layers.ground, currentCell) == -1:
-				set_cell(layers.ground, currentCell, 0, borderAtlasCoords)
-"
-
 [node name="EarthTileMap" type="TileMap"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_uh4ul")
@@ -189,5 +129,4 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 2
 layer_2/z_index = 2
 layer_2/tile_data = PackedInt32Array(-65543, 0, 0, -7, 0, 0, -6, 0, 0, 65530, 0, 0, -5, 0, 0, -65542, 0, 0, -196614, 0, 0, -131078, 0, 0, -262149, 0, 0, -327683, 0, 0, -262148, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -393214, 0, 0, -327679, 0, 0, -327680, 0, 0, -262145, 0, 0, -262146, 0, 0, -262147, 0, 0, -196610, 0, 0, -196609, 0, 0, -196611, 0, 0, -196612, 0, 0, -131075, 0, 0, -131076, 0, 0, -65540, 0, 0, -65541, 0, 0, -131077, 0, 0, -196613, 0, 0)
-script = SubResource("GDScript_xuua0")
-oceanBorderWidth = 150
+script = ExtResource("2_tx6hy")

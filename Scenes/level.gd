@@ -4,6 +4,8 @@ var transitionSpeed := 2.5
 
 @onready var cow := $Cow
 @onready var ufo := $UFO
+@onready var map := $EarthTileMap
+@onready var indicator := $Indicator
 
 var lastCowYPos := -10
 
