@@ -13,6 +13,9 @@ func _ready() -> void:
 	ufo.position.y = -750
 	var tweenPos = get_tree().create_tween()
 	tweenPos.tween_property(ufo, "position", Vector2(0, -150), transitionSpeed).set_trans(Tween.TRANS_QUAD)
+	await tweenPos.finished
+	ufo.gameRunning = true
+	indicator.gameRunning = true
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("Beam"):

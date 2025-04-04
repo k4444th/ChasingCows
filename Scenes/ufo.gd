@@ -4,11 +4,13 @@ var keyboardInputDirections := Vector2(0.0, 0.0)
 var direction := Vector2(0.0, 0.0)
 
 @export var speed := 100
+@export var gameRunning := false
 
 func _process(_delta: float) -> void:
-	getKeyboardInputs()
-	setDirection()
-	moveSprite()
+	if gameRunning:
+		getKeyboardInputs()
+		setDirection()
+		moveSprite()
 
 func getKeyboardInputs():
 	keyboardInputDirections.x = Input.get_axis("Left", "Right")
