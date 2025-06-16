@@ -30,5 +30,7 @@ func showNextImage():
 	imageIndex += 1
 
 func startGame():
+	Gamemanager.gameData["hasSeenIntroSequence"] = true
+	Gamemanager.saveData()
 	print("Switch scene")
 	

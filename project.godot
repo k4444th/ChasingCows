@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="ChasingCows"
-run/main_scene="uid://deytxoy3k8kym"
+run/main_scene="uid://dpyve8x1i5f7y"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Gamemanager="*res://scripts/gamemanager.gd"
 
 [dialogue_manager]
 
