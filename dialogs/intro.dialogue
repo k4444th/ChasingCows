@@ -1,0 +1,21 @@
+do showNextImage()
+You: It all began with the growth of a strange new type of grass on the planet PA-99-N2 b.
+do showNextImage()
+You: Those who came too close fell ill.
+do showNextImage()
+You: And then[wait=0.5] they vanished.
+do showNextImage()
+You: In an ancient library, I found records of this mutant grass.
+do showNextImage()
+You: An old legend spoke of a creature that could defeat it.
+do showNextImage()
+You: A being with unimaginable digestive power.
+do showNextImage()
+You: Able to consume the killer grass and neutralize it!
+do showNextImage()
+You: They said it lived on another planet.[wait=0.5] In another galaxy.
+do showNextImage()
+You: It is called…
+do showNextImage()
+You: Cow.
+do startGame()
