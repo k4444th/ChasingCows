@@ -6,6 +6,7 @@
 script = ExtResource("1_sffe5")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

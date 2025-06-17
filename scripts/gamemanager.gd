@@ -6,18 +6,20 @@ var nextScene = "res://scenes/general/startscreen.tscn"
 var loadingScreen = preload("res://scenes/general/loadingscreen.tscn")
 
 var gameData := {
-	"hasSeenIntroSequence": false
+	"hasSeenIntroSequence": false,
+	"hasSeenTheTheftSequence": false
 }
 
 func _ready() -> void:
 	loadData()
+	resetData()
 
 func saveData():
-	var saveData = {
+	var data = {
 		"gameData": 	gameData
 	}
 	var file = FileAccess.open(savePath, FileAccess.WRITE)
-	file.store_string(JSON.stringify(saveData))
+	file.store_string(JSON.stringify(data))
 	file.close()
 
 func loadData():
@@ -30,11 +32,13 @@ func loadData():
 		if typeof(loadedData) == TYPE_DICTIONARY:
 			gameData = loadedData.get("gameData", {
 					"hasSeenIntroSequence": false,
+					"hasSeenTheTheftSequence": false,
 				}
 			)
 
 func resetData():
 	gameData["hasSeenIntroSequence"] = false
+	gameData["hasSeenTheTheftSequence"] = false
 	saveData()
 
 		

@@ -1,16 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://deytxoy3k8kym"]
+[gd_scene load_steps=2 format=3 uid="uid://deytxoy3k8kym"]
 
-[ext_resource type="Texture2D" uid="uid://61el8kms68m3" path="res://assets/noImage.jpg" id="1_1iurh"]
 [ext_resource type="Script" uid="uid://cakkk41hfobi0" path="res://scripts/cutscenes/intro_cutscene.gd" id="1_8464f"]
 
 [node name="IntroCutscene" type="Node"]
 script = ExtResource("1_8464f")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Image" type="TextureRect" parent="."]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_1iurh")
 stretch_mode = 6

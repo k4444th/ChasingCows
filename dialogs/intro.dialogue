@@ -13,7 +13,7 @@ You: A being with unimaginable digestive power.
 do showNextImage()
 You: Able to consume the killer grass and neutralize it!
 do showNextImage()
-You: They said it lived on another planet.[wait=0.5] In another galaxy.
+You: They said it lived on another planet. In another galaxy.
 do showNextImage()
 You: It is called…
 do showNextImage()

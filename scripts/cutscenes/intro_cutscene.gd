@@ -3,7 +3,7 @@ extends Node
 var imageIndex = 0
 
 var images = [
-	preload("res://assets/noImage.jpg"),
+	preload("res://assets/introCutscene/IntroCutscene1.png"),
 	preload("res://assets/noImage.jpg"),
 	preload("res://assets/noImage.jpg"),
 	preload("res://assets/noImage.jpg"),
@@ -16,21 +16,22 @@ var images = [
 ]
 
 var dialogBalloonScene = preload("res://scenes/dialog/balloon.tscn")
-var introDialogressource = preload("res://dialogs/intro.dialogue")
+var introDialogResource = preload("res://dialogs/intro.dialogue")
 
-@onready var image = $TextureRect
-
-func _ready() -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	var dialogBalloonInstance = dialogBalloonScene.instantiate()
 	add_child(dialogBalloonInstance)
-	dialogBalloonInstance.start(introDialogressource, "")
+	dialogBalloonInstance.start(introDialogResource, "")
+
+func _ready() -> void:
+	%Image.texture = images[0]
 
 func showNextImage():
-	image.texture = images[imageIndex]
+	%Image.texture = images[imageIndex]
 	imageIndex += 1
 
 func startGame():
 	Gamemanager.gameData["hasSeenIntroSequence"] = true
 	Gamemanager.saveData()
-	print("Switch scene")
-	
+	Gamemanager.nextScene = "res://scenes/cutscenes/the_theft_cutscene.tscn"
+	get_tree().change_scene_to_packed(load("res://scenes/general/loadingscreen.tscn"))
